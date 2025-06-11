@@ -1,5 +1,5 @@
 ## 🧑🏽‍💻
-link on my project: https://tetiana5buria.github.io/NPM/mysrc/
+link on my project: https://github.com/Tetiana5Buria/TS.git
 
 ## 📒 Description:
 This repository contains tasks for learning the syntax of the strongly typed programming language TypeScript.
