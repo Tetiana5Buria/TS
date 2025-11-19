@@ -23,9 +23,10 @@ function summ(a: BigObject): number {
     if (elem === undefined || elem?.cvalue === undefined) return 2021;
     /*  if (typeof elem.cvalue === 'String') return +elem.cvalue || '2021'; */
     if (typeof elem.cvalue === "string") {
+      //'String'=> 'string' + isNan
       const num = Number(elem.cvalue);
       return isNaN(num) ? 2021 : num;
-    } //'String'=> 'string' + isNan
+    }
     /* if (elem.cvalue.isBigObject !== undefined) return summ(elem); */
     if (typeof elem.cvalue === "object" && elem.cvalue !== null) {
       return summ(elem.cvalue);
@@ -69,3 +70,27 @@ console.log(
     nan: { cvalue: "" },
   })
 );
+console.log("=== Нульові значення ===");
+console.log(
+  summ({
+    zero: { cvalue: 0 },
+    zeroStr: { cvalue: "0" },
+    emptyStr: { cvalue: "" },
+  })
+); // 0 + 0 + 0 = 0
+
+console.log(
+  summ({
+    int: { cvalue: "100" },
+    float: { cvalue: "12.5" },
+    badFloat: { cvalue: "12.5abc" },
+  })
+);
+// 100 + 12.5 + 2021 = 2133.5
+/* object */
+const bigObj: BigObject = {};
+for (let i = 0; i < 100; i++) {
+  bigObj[`key${i}`] = { cvalue: i % 2 === 0 ? i : "invalid" };
+}
+console.log("Big object sum:", summ(bigObj));
+//  101050 + 2450 = 103500
