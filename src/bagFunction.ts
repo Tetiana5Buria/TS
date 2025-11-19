@@ -70,7 +70,6 @@ console.log(
     nan: { cvalue: "" },
   })
 );
-console.log("=== Нульові значення ===");
 console.log(
   summ({
     zero: { cvalue: 0 },
